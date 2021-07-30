@@ -81,8 +81,8 @@
     skuStockList: [],
     //商品相关专题{subjectId: 0}
     subjectProductRelationList: [],
-    //商品相关优选{prefrenceAreaId: 0}
-    prefrenceAreaProductRelationList: [],
+    //商品相关优选{preferenceAreaId: 0}
+    preferenceAreaProductRelationList: [],
     productCategoryId: null,
     productCategoryName: '',
     productSn: '',

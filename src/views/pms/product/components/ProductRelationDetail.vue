@@ -22,9 +22,9 @@
           filterable
           :filter-method="filterMethod"
           filter-placeholder="请输入优选名称"
-          v-model="selectPrefrenceArea"
-          :titles="prefrenceAreaTitles"
-          :data="prefrenceAreaList">
+          v-model="selectPreferenceArea"
+          :titles="preferenceAreaTitles"
+          :data="preferenceAreaList">
         </el-transfer>
       </el-form-item>
       <el-form-item style="text-align: center">
@@ -37,7 +37,7 @@
 
 <script>
   import {fetchListAll as fetchSubjectList} from '@/api/subject'
-  import {fetchList as fetchPrefrenceAreaList} from '@/api/prefrenceArea'
+  import {fetchList as fetchPreferenceAreaList} from '@/api/preferenceArea'
 
   export default {
     name: "ProductRelationDetail",
@@ -55,14 +55,14 @@
         //专题左右标题
         subjectTitles: ['待选择', '已选择'],
         //所有专题列表
-        prefrenceAreaList: [],
+        preferenceAreaList: [],
         //专题左右标题
-        prefrenceAreaTitles: ['待选择', '已选择']
+        preferenceAreaTitles: ['待选择', '已选择']
       };
     },
     created() {
       this.getSubjectList();
-      this.getPrefrenceAreaList();
+      this.getPreferenceAreaList();
     },
     computed:{
       //选中的专题
@@ -85,21 +85,21 @@
         }
       },
       //选中的优选
-      selectPrefrenceArea:{
+      selectPreferenceArea:{
         get:function () {
-          let prefrenceAreas =[];
-          if(this.value.prefrenceAreaProductRelationList==null||this.value.prefrenceAreaProductRelationList.length<=0){
-            return prefrenceAreas;
+          let preferenceAreas =[];
+          if(this.value.preferenceAreaProductRelationList==null||this.value.preferenceAreaProductRelationList.length<=0){
+            return preferenceAreas;
           }
-          for(let i=0;i<this.value.prefrenceAreaProductRelationList.length;i++){
-            prefrenceAreas.push(this.value.prefrenceAreaProductRelationList[i].prefrenceAreaId);
+          for(let i=0;i<this.value.preferenceAreaProductRelationList.length;i++){
+            preferenceAreas.push(this.value.preferenceAreaProductRelationList[i].preferenceAreaId);
           }
-          return prefrenceAreas;
+          return preferenceAreas;
         },
         set:function (newValue) {
-          this.value.prefrenceAreaProductRelationList=[];
+          this.value.preferenceAreaProductRelationList=[];
           for(let i=0;i<newValue.length;i++){
-            this.value.prefrenceAreaProductRelationList.push({prefrenceAreaId:newValue[i]});
+            this.value.preferenceAreaProductRelationList.push({preferenceAreaId:newValue[i]});
           }
         }
       }
@@ -119,11 +119,11 @@
           }
         });
       },
-      getPrefrenceAreaList() {
-        fetchPrefrenceAreaList().then(response=>{
+      getPreferenceAreaList() {
+        fetchPreferenceAreaList().then(response=>{
           let list = response.data;
           for (let i = 0; i < list.length; i++) {
-            this.prefrenceAreaList.push({
+            this.preferenceAreaList.push({
               label: list[i].name,
               key: list[i].id
             });
