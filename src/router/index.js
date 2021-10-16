@@ -358,6 +358,27 @@ export const asyncRouterMap = [
       }
     ]
   },
+  {
+    path:'/manage',
+    component: Layout,
+    redirect: '/manage/info',
+    name: 'manage',
+    meta: {title: '管理', icon: 'example'},
+    children: [
+      {
+        path: 'info',
+        name: 'info',
+        component: () => import('@/views/manage/info/index'),
+        meta: {title: '系统信息'}
+      },
+      {
+        path: 'api',
+        name: 'api',
+        component: () => import('@/views/manage/api/index'),
+        meta: {title: 'API信息'}
+      }
+    ]
+  },
   {path: '*', redirect: '/404', hidden: true}
 ]
 
