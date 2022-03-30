@@ -52,7 +52,7 @@
           <template slot-scope="scope">{{ scope.row.createTime | formatDateTime }}</template>
         </el-table-column>
         <el-table-column label="最后登录" width="160" align="center">
-          <template slot-scope="scope">{{ scope.row.loginTime | formatDateTime }}</template>
+          <template slot-scope="scope">{{ scope.row.loginTime | formatDate }}</template>
         </el-table-column>
         <el-table-column label="是否启用" width="140" align="center">
           <template slot-scope="scope">
@@ -198,6 +198,13 @@ export default {
       }
       let date = new Date(time);
       return formatDate(date, 'yyyy-MM-dd hh:mm:ss')
+    },
+    formatDate(time) {
+      if (time == null || time === '') {
+        return 'N/A';
+      }
+      let date = new Date(time);
+      return formatDate(date, 'yyyy-MM-dd')
     }
   },
   methods: {

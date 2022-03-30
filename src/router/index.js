@@ -369,13 +369,13 @@ export const asyncRouterMap = [
         path: 'info',
         name: 'info',
         component: () => import('@/views/manage/info/index'),
-        meta: {title: '系统信息'}
+        meta: {title: '系统信息', icon: 'form'}
       },
       {
         path: 'api',
         name: 'api',
         component: () => import('@/views/manage/api/index'),
-        meta: {title: 'API信息'}
+        meta: {title: 'API信息', icon: 'order-setting'}
       }
     ]
   },
