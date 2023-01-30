@@ -1,6 +1,6 @@
 <template>
   <div style="margin-top: 50px">
-    <el-form :model="value" ref="productAttrForm" label-width="120px" style="width: 720px" size="small">
+    <el-form :model="value" ref="productAttrForm" label-width="120px" class="form-inner-container" size="small">
       <el-form-item label="属性类型：">
         <el-select v-model="value.productAttributeCategoryId"
                    placeholder="请选择属性类型"
@@ -49,10 +49,18 @@
           </el-table-column>
           <el-table-column
             label="销售价格"
-            width="80"
+            width="100"
             align="center">
             <template slot-scope="scope">
               <el-input v-model="scope.row.price"></el-input>
+            </template>
+          </el-table-column>
+          <el-table-column
+            label="促销价格"
+            width="100"
+            align="center">
+            <template slot-scope="scope">
+              <el-input v-model="scope.row.promotionPrice"></el-input>
             </template>
           </el-table-column>
           <el-table-column
@@ -73,6 +81,7 @@
           </el-table-column>
           <el-table-column
             label="SKU编号"
+            width="160"
             align="center">
             <template slot-scope="scope">
               <el-input v-model="scope.row.skuCode"></el-input>
@@ -134,7 +143,7 @@
       <el-form-item label="商品相册：">
         <multi-upload v-model="selectProductPics"></multi-upload>
       </el-form-item>
-      <el-form-item label="规格参数：">
+      <el-form-item label="商品详情：">
         <el-tabs v-model="activeHtmlName" type="card">
           <el-tab-pane label="电脑端详情" name="pc">
             <tinymce :width="595" :height="300" v-model="value.detailHtml"></tinymce>
